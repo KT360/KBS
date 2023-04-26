@@ -8,16 +8,14 @@ export const windowSlice = createSlice({
     },
 
     reducers: {
-        change_page: (state = initialState, action) =>
-        {
-            
-            return
-            {
+        change_page: (state, action) =>
+        { 
+            return {
                 ...state,
                 value: action.payload
             }
-            
         }
+               
     },
 
 })

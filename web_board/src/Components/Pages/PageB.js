@@ -1,6 +1,7 @@
 import React from "react";
+import './styles.css';
 
 export default function PageB()
 {
-    return(<div style={{width:300, height:300, color: 'Blue'}}>Page B</div>)
+    return(<div className="app-page" style={{color: 'Blue'}}>Page B</div>)
 }
