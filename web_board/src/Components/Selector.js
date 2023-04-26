@@ -9,8 +9,8 @@ export default function Selector()
 
     return(
         <div style={{color: "Green"}}>
-            <button onClick={() => dispatch(change_page(1))}>Page 1</button>
-            <button> onClick={() => dispatch(change_page(2))}Page 2</button>
+            <button onClick={() => dispatch(change_page(0))}>Page 1</button>
+            <button onClick={() => dispatch(change_page(1))}> Page 2</button>
         </div>
     );
 }

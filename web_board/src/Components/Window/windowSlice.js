@@ -1,5 +1,5 @@
-const createSlice = React.lazy(() => {import('@reduxjs/toolkit')});
-
+import { createSlice } from '@reduxjs/toolkit';
+import React from 'react';
 
 export const windowSlice = createSlice({
     name: 'window',
@@ -8,8 +8,15 @@ export const windowSlice = createSlice({
     },
 
     reducers: {
-        change_page: (state) =>{
-            state.value = state;
+        change_page: (state = initialState, action) =>
+        {
+            
+            return
+            {
+                ...state,
+                value: action.payload
+            }
+            
         }
     },
 
