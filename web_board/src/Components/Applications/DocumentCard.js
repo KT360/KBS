@@ -6,9 +6,14 @@ import React from "react"
 import { Card, CardHeader, CardBody ,Flex, Avatar, Box, Heading, Text, IconButton, Image } from "@chakra-ui/react"
 import {HamburgerIcon, AddIcon, ExternalLinkIcon, EditIcon} from '@chakra-ui/icons'
 import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react"
+import UploadModal from "../UploadModal"
+import {useDisclosure} from "@chakra-ui/react"
+
 
 export default function DocumentCard({name, title, notes, ...props})
 {
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
     return(
         <Card maxW='md' {...props}>
@@ -33,7 +38,7 @@ export default function DocumentCard({name, title, notes, ...props})
                         <MenuItem icon={<AddIcon />} >
                         New Note
                         </MenuItem>
-                        <MenuItem icon={<ExternalLinkIcon />}>
+                        <MenuItem onClick={onOpen} icon={<ExternalLinkIcon />}>
                         Upload Image
                         </MenuItem>
                         <MenuItem icon={<EditIcon />}>
@@ -41,6 +46,7 @@ export default function DocumentCard({name, title, notes, ...props})
                         </MenuItem>
                     </MenuList>
                 </Menu>
+                <UploadModal handleOpen={isOpen} handleClose={onClose}/>
                 </Flex>
             </CardHeader>
             <CardBody>
