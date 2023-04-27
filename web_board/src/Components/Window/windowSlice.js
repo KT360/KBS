@@ -10,6 +10,7 @@ export const windowSlice = createSlice({
     reducers: {
         change_page: (state, action) =>
         { 
+            console.log("Page change: "+action.payload);
             return {
                 ...state,
                 value: action.payload

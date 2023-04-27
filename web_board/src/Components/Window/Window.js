@@ -1,20 +1,17 @@
 import useState from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import Page from '../Pages/Page'
 import { HStack, IconButton, Link, Flex, Heading } from '@chakra-ui/react';
 import {useDisclosure} from "@chakra-ui/react"
 import { Box } from '@chakra-ui/react'
 import {HamburgerIcon} from '@chakra-ui/icons'
 import Selector from '../Selector';
-
+import Page from '../Pages/Page';
 
 //Main window that manages each page, as a list and displays them 
 export default function Window()
 {
     const {isOpen, onOpen, onClose} = useDisclosure();
 
-    const page = useSelector((state) => state.window.value);
-    const page_array = [<Page></Page>]
 
     //page_array[page]
     return(
@@ -44,7 +41,11 @@ export default function Window()
 
                     <Selector key={'selID'}></Selector>
                 </Flex>
-                        
+
+            </Box>
+
+            <Box>
+                <Page></Page>
             </Box>
         </>
     );
