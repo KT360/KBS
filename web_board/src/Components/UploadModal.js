@@ -1,6 +1,7 @@
 import React from "react";
-import { Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter } from "@chakra-ui/react";
-
+import { Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, background } from "@chakra-ui/react";
+import './UploadModal.css'
+import UploadComponent from "./UploadComponent";
 
 export default function UploadModal({handleOpen, handleClose, handleSave})
 {
@@ -32,9 +33,7 @@ export default function UploadModal({handleOpen, handleClose, handleSave})
           </ModalBody>
 
           <ModalFooter>
-            <Button onClick={handleSave} colorScheme='blue' mr={3}>
-              Save
-            </Button>
+            <UploadComponent></UploadComponent>
             <Button onClick={handleClose}>Cancel</Button>
           </ModalFooter>
         </ModalContent>
