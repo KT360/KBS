@@ -5,13 +5,19 @@ import {useDispatch, useSelector} from 'react-redux';
 import { change_page } from "../Window/windowSlice";
 import { CalendarIcon, RepeatIcon, PlusSquareIcon, InfoIcon, CheckCircleIcon } from "@chakra-ui/icons";
 import DocumentCard from "../Applications/DocumentCard";
-
+import { useState, useEffect } from "react";
 
 export default function Page()
 {
 
     const page = useSelector((state) => state.window.value);
     const dispatch = useDispatch();
+    const [cards, setCards] = useState([]);
+
+    useEffect(() => {
+
+    });
+
     //Basic page setup:
     //Button
     //action, icon ,text, colorScheme = "green"
@@ -40,7 +46,7 @@ export default function Page()
         pages.forEach((page)=>{
             if(page.documentCards)
             {
-                
+                ``
             }
         });
     }

@@ -9,10 +9,36 @@ const PORT = process.env.PORT || 3000;
 // serve up production assets
 app.use(express.static('web_board/build'));
 app.use(bodyParser.json());
+app.use('/uploads',express.static(path.join(__dirname, 'uploads')));
 // let the react app to handle any unknown routes 
 // serve up the index.html if express does'nt recognize the route
 const path = require('path');
 const bodyParser = require('body-parser');
+
+const readCardsData = () =>{
+    const dataPath = path.join(__dirname, 'cards.json');
+    if(!fs.existsSync(dataPath))
+    {
+        return {pages:{}};
+    }
+    const rawData = fs.readFileSync(dataPath);
+
+    return JSON.parse(rawData);
+}
+
+app.get('/cards/:page', (req,res)=>{
+    const data = readCardsData();
+    const pageName = req.params.page;
+
+    if(data.pages[pageName])
+    {
+        res.json(data.pages[pageName]);
+    }else
+    {
+        res.status(404).json({message: 'page not found'});
+    }
+})
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'uploads/');
