@@ -3,13 +3,14 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import {Button} from '@chakra-ui/react';
 
+//Pretty much the "Upload" button
+//Its in charge of handling the post to the server
 export default function UploadComponent()
 {
     const [file, setFile] = useState(null);
 
     const handleImageChange = (e) =>{
         setFile(e.target.files[0]);
-
     };
 
     const handleUpload = async () =>{
@@ -43,9 +44,11 @@ export default function UploadComponent()
                 <input type="file" accept='image/*' onChange={handleImageChange}/>
                     Upload
             </label>
+            <label marginRight={6}>{file ? file.name: null}</label>
             <Button onClick={handleUpload} colorScheme='blue' mr={3}>
             Save
             </Button>
+            
         </>
     )
 }

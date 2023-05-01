@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import React from 'react';
 
+//(React Redux)
+//The "Window" component manages the current page state
+//updates it and returns the updated value for use
 export const windowSlice = createSlice({
     name: 'window',
     initialState: {

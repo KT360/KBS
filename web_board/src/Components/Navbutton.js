@@ -4,6 +4,7 @@ import { change_page } from './Window/windowSlice';
 import { Button} from '@chakra-ui/react'
 import {PlusSquareIcon} from '@chakra-ui/react';
 
+//Button to quickly change to a specific page
 export default function Navbutton(props)
 {
 

@@ -9,8 +9,8 @@ import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react"
 import UploadModal from "../UploadModal"
 import {useDisclosure} from "@chakra-ui/react"
 
-
-export default function DocumentCard({name, title, notes, ...props})
+//Card to display data fetched from the server
+export default function DocumentCard({name, title, notes, image ,...props})
 {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -56,7 +56,7 @@ export default function DocumentCard({name, title, notes, ...props})
             </CardBody>
             <Image
                 objectFit='cover'
-                src='https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
+                src={image}
                 alt='Chakra UI'
             />
         </Card>

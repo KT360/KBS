@@ -3,6 +3,7 @@ import Window from './Components/Window/Window';
 import Selector from './Components/Selector';
 import './App.css';
 
+//display the main window
 function App() {
   return [<Window key={'winID'}></Window>]
     

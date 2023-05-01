@@ -2,19 +2,17 @@ const express = require('express');
 const app = express();
 const multer = require('multer');
 const fs = require('fs');
-const path = require('path');
 // if not in production use the port 3000
 const PORT = process.env.PORT || 3000;
-
-// serve up production assets
-app.use(express.static('web_board/build'));
-app.use(bodyParser.json());
-app.use('/uploads',express.static(path.join(__dirname, 'uploads')));
-// let the react app to handle any unknown routes 
-// serve up the index.html if express does'nt recognize the route
 const path = require('path');
 const bodyParser = require('body-parser');
 
+// serve up production assets
+app.use(express.static('web_board/build'));
+app.use('/uploads',express.static(path.join(__dirname, 'uploads')));
+app.use(bodyParser.json());
+
+//reads the json card data and transforms it into a javascript object
 const readCardsData = () =>{
     const dataPath = path.join(__dirname, 'cards.json');
     if(!fs.existsSync(dataPath))
@@ -26,6 +24,7 @@ const readCardsData = () =>{
     return JSON.parse(rawData);
 }
 
+//For the card request API, get the data, check if page exist and send appropriate data
 app.get('/cards/:page', (req,res)=>{
     const data = readCardsData();
     const pageName = req.params.page;
@@ -39,6 +38,8 @@ app.get('/cards/:page', (req,res)=>{
     }
 })
 
+//Create a multer storage device to handle the transfer of data
+//So that each image has a unique ID append the current date and time
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'uploads/');
@@ -48,6 +49,7 @@ const storage = multer.diskStorage({
     }
 });
 
+//create a device for upload
 const upload = multer({storage});
 
 //API endpoint for file uploads
@@ -55,8 +57,12 @@ app.post('/upload', upload.single('file'), (req, res) => {
     res.json({message: "File uploaded successfully"});
 })
 
+// let the react app to handle any unknown routes 
+// serve up the index.html if express does'nt recognize the route
 app.get('*', (req, res) => {
 res.sendFile(path.resolve(__dirname, 'web_board', 'build', 'index.html' ));
 });
+
+
 console.log('server started on port:',PORT);
 app.listen(PORT, '0.0.0.0');

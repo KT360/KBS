@@ -1,14 +1,18 @@
 import useState from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { HStack, IconButton, Link, Flex, Heading } from '@chakra-ui/react';
-import {useDisclosure} from "@chakra-ui/react"
-import { Box } from '@chakra-ui/react'
-import {HamburgerIcon} from '@chakra-ui/icons'
+import { HStack, IconButton, Link, Flex, Heading, Center } from '@chakra-ui/react';
+import {useDisclosure, Box, Alert} from "@chakra-ui/react"
+import {HamburgerIcon, WarningIcon} from '@chakra-ui/icons'
 import Selector from '../Selector';
 import Page from '../Pages/Page';
 import { Drawer, DrawerOverlay, DrawerContent, DrawerHeader, DrawerBody } from '@chakra-ui/react';
 
-//Main window that manages each page, as a list and displays them 
+
+
+//Main window
+//A container for all the main UI components like the drawer
+//NavButtons
+//and the page
 export default function Window()
 {
     const {isOpen, onOpen, onClose} = useDisclosure();
@@ -54,7 +58,10 @@ export default function Window()
                 </Flex>
 
             </Box>
-
+            <Alert status='info' alignContent={"center"}>
+                <WarningIcon marginRight={5}/>
+                Alpha version: 0.0.1 (server)
+            </Alert>           
             <Box>
                 <Page></Page>
             </Box>

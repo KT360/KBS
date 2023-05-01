@@ -5,7 +5,7 @@ import { Icon } from '@chakra-ui/react'
 import {EditIcon, CalendarIcon} from '@chakra-ui/icons'
 
 
-
+//Top right buttons to navigate to main pages quicker
 export default function Selector()
 {
     //<Navbutton Icon={<CalendarIcon></CalendarIcon>} text={'Page 2'} page_number={1}></Navbutton>
