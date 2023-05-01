@@ -13,7 +13,7 @@ export default function Selector()
 
     return(
         <div style={{color: "Green"}}>
-            <Navbutton Icon={<EditIcon></EditIcon>} text={'Page 1'} page_number={0}></Navbutton>
+            <Navbutton Icon={<EditIcon></EditIcon>} text={'Page 1'} page_name={"home_page"}></Navbutton>
            
         </div>
     );

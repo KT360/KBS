@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, background } from "@chakra-ui/react";
 import './UploadModal.css'
 import UploadComponent from "./UploadComponent";
-
+//IP: htttp://10.229.27.21:5000
 export default function UploadModal({handleOpen, handleClose, handleSave})
 {
     return(

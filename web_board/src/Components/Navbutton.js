@@ -11,7 +11,7 @@ export default function Navbutton(props)
 
     return(
         <div style={{color: "Green"}}>
-            <Button leftIcon={props.Icon} onClick={() => dispatch(change_page(props.page_number))}>{props.text}</Button>
+            <Button leftIcon={props.Icon} onClick={() => dispatch(change_page(props.page_name))}>{props.text}</Button>
         </div>
     );
 }

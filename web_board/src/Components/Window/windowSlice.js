@@ -4,7 +4,7 @@ import React from 'react';
 export const windowSlice = createSlice({
     name: 'window',
     initialState: {
-        value: 0,
+        value: "home_page",
     },
 
     reducers: {
