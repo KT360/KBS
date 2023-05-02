@@ -37,14 +37,14 @@ const readCardsData = () =>{
 //send status
 
 app.patch('/pages/:pageID/cards/:cardID', (req, res)=>{
-    const {pageID, cardID} = req.params;
-    const data = req.body;
-
     const dataPath = path.join(__dirname, 'cards.json');
     const dataContent = fs.readFileSync(dataPath, 'utf-8');
     const pages = JSON.parse(dataContent);
-    
-    const cardIndex = pages[pageID].findIndex
+
+    console.log(pages);
+
+    const {pageID, cardID} = req.params;
+    const data = req.body;
 
     pages[pageID][cardID] = {
         ...pages[pageID][cardID],
