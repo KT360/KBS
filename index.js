@@ -44,6 +44,8 @@ app.patch('/pages/:pageID/cards/:cardID', (req, res)=>{
     const dataContent = fs.readFileSync(dataPath, 'utf-8');
     const pages = JSON.parse(dataContent);
     
+    const cardIndex = pages[pageID].findIndex
+
     pages[pageID][cardID] = {
         ...pages[pageID][cardID],
         data

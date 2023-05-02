@@ -20,7 +20,7 @@ export default function UploadComponent({onClose, index})
 
     const handleImageChange = (e) =>{
         setFile(e.target.files[0]);
-        dispatch(update_form({image: e.target.files[0].filName}))
+        dispatch(update_form({image: "/uploads"+e.target.files[0].filName}))
     };
 
     const handleUpload = async () =>{
