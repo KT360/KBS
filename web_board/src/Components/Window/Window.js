@@ -5,9 +5,10 @@ import {useDisclosure, Box, Alert} from "@chakra-ui/react"
 import {HamburgerIcon, WarningIcon} from '@chakra-ui/icons'
 import Selector from '../Selector';
 import Page from '../Pages/Page';
-import { Drawer, DrawerOverlay, DrawerContent, DrawerHeader, DrawerBody } from '@chakra-ui/react';
+import { Drawer, DrawerOverlay, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter } from '@chakra-ui/react';
 import Navbutton from '../Navbutton';
-
+import {FcTreeStructure} from 'react-icons/fc'
+import { Icon } from '@chakra-ui/react';
 
 //Main window
 //A container for all the main UI components like the drawer
@@ -16,6 +17,8 @@ import Navbutton from '../Navbutton';
 export default function Window()
 {
     const {isOpen, onOpen, onClose} = useDisclosure();
+
+    const version_string = "alpha version: 0.0.3";
 
     return(
         <>
@@ -39,14 +42,20 @@ export default function Window()
                         <Drawer placement={'left'} onClose={onClose} isOpen={isOpen}>
                             <DrawerOverlay />
                             <DrawerContent>
-                            <DrawerHeader borderBottomWidth='1px'>Quick Menu</DrawerHeader>
-                            <DrawerBody>
-                                <Navbutton bgColor='#9cf7c7' variant='outline' text={"Toyota"} page_name={"toyota_main"}/>
-                                <Navbutton bgColor='#9cf7c7' variant='outline' text={"Lexus"} page_name={"lexus_main"}/>
-                                <Navbutton bgColor='#9cf7c7' variant='outline' text={"Ford"} page_name={"ford_main"}/>
-                            </DrawerBody>
+                                <DrawerHeader borderBottomWidth='1px'>
+                                    <Box display={'flex'} alignContent={'center'}>
+                                        <Icon as={FcTreeStructure} boxSize={35} marginRight={5}></Icon>
+                                        Quick Menu
+                                    </Box>
+                                </DrawerHeader>
+                                <DrawerBody>
+                                    <Navbutton bgColor='#9cf7c7' variant='outline' text={"Toyota"} page_name={"toyota_main"}/>
+                                    <Navbutton bgColor='#9cf7c7' variant='outline' text={"Lexus"} page_name={"lexus_main"}/>
+                                    <Navbutton bgColor='#9cf7c7' variant='outline' text={"Ford"} page_name={"ford_main"}/>
+                                </DrawerBody>
+                                <DrawerFooter fontSize={12} justifyContent={'left'}>{version_string}</DrawerFooter>
                             </DrawerContent>
-                    </Drawer>
+                        </Drawer>
 
                         <Heading as={Link} to={"/"} fontWeight={"normal"} size={"md"}>
                             KBS Board
@@ -59,7 +68,7 @@ export default function Window()
             </Box>
             <Alert status='info' alignContent={"center"}>
                 <WarningIcon marginRight={5}/>
-                Alpha version: 0.0.2 (Base Layout)
+                Alpha version: 0.0.3 (Base Layout)
             </Alert>           
             <Box>
                 <Page></Page>

@@ -8,7 +8,13 @@ import {HamburgerIcon, AddIcon, ExternalLinkIcon, EditIcon} from '@chakra-ui/ico
 import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react"
 import UploadModal from "../UploadModal"
 import {useDisclosure} from "@chakra-ui/react"
+import { SingleSource } from "./CustomImage"
 
+/*<Image
+                objectFit='cover'
+                src={image}
+                alt='Chakra UI'
+            />*/
 //Card to display data fetched from the server
 export default function DocumentCard({name, title, notes, image ,...props})
 {
@@ -16,7 +22,7 @@ export default function DocumentCard({name, title, notes, image ,...props})
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     return(
-        <Card maxW='md' {...props}>
+        <Card maxW='md' {...props} margin={5}>
             <CardHeader>
                 <Flex spacing='4'>
                 <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
@@ -54,11 +60,9 @@ export default function DocumentCard({name, title, notes, image ,...props})
                 {notes}
                 </Text>
             </CardBody>
-            <Image
-                objectFit='cover'
+            <SingleSource objectFit='cover'
                 src={image}
-                alt='Chakra UI'
-            />
+                alt='Chakra UI'/>
         </Card>
     )
 }

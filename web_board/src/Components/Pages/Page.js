@@ -75,6 +75,8 @@ export default function Page()
 
         kbs_page: { buttonConfigs: [ {text: "TPM", action: ()=> dispatch(change_page("tpm_page")), icon: InfoIcon, colorScheme: "green"},
         {text: "Quality", action: () => dispatch(change_page("quality_page")), icon: CheckCircleIcon, colorScheme: "purple"} ],},
+
+        quality_page: {documentCards: true,},
         
         tpm_page: { buttonConfigs: [ {text: "2S", action: ()=> dispatch(change_page("two_s_page")), icon: CalendarIcon, colorScheme: "blue"}, {text: "Back", action: ()=> dispatch(change_page("kbs_page")), icon: RepeatIcon, colorScheme: "green" }, ] },
         
