@@ -10,19 +10,15 @@ import UploadModal from "../UploadModal"
 import {useDisclosure} from "@chakra-ui/react"
 import { SingleSource } from "./CustomImage"
 
-/*<Image
-                objectFit='cover'
-                src={image}
-                alt='Chakra UI'
-            />*/
+
 //Card to display data fetched from the server
-export default function DocumentCard({name, title, notes, image ,...props})
+export default function DocumentCard({name, title, notes, image, index ,...props})
 {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     return(
-        <Card maxW='md' {...props} margin={5}>
+        <Card maxW='md' {...props} margin={5} backgroundColor={'#d0e7f7'}>
             <CardHeader>
                 <Flex spacing='4'>
                 <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
@@ -52,7 +48,7 @@ export default function DocumentCard({name, title, notes, image ,...props})
                         </MenuItem>
                     </MenuList>
                 </Menu>
-                <UploadModal handleOpen={isOpen} handleClose={onClose}/>
+                <UploadModal index={index} handleOpen={isOpen} handleClose={onClose}/>
                 </Flex>
             </CardHeader>
             <CardBody>

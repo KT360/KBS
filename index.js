@@ -24,6 +24,36 @@ const readCardsData = () =>{
     return JSON.parse(rawData);
 }
 
+//end point for updating cards
+//get at '/pages/:pageID/cards/:cardID'
+//get data from request 
+// get modified data from body
+//get file path to json file
+//parse the json file into an object
+//get page name
+//get card index
+//update data
+//write to file
+//send status
+
+app.patch('/pages/:pageID/cards/:cardID', (req, res)=>{
+    const {pageID, cardID} = req.params;
+    const data = req.body;
+
+    const dataPath = path.join(__dirname, 'cards.json');
+    const dataContent = fs.readFileSync(dataPath, 'utf-8');
+    const pages = JSON.parse(dataContent);
+    
+    pages[pageID][cardID] = {
+        ...pages[pageID][cardID],
+        data
+    };
+
+    fs.writeFileSync(dataPath, JSON.stringify(pages, null, 2));
+    res.status(200).json({message: "Card updated successfully"});
+
+});
+
 //For the card request API, get the data, check if page exist and send appropriate data
 app.get('/cards/:page', (req,res)=>{
     const data = readCardsData();

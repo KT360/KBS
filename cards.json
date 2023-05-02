@@ -5,7 +5,8 @@
                 "name": "Astrid Kamto",
                 "title": "Intern, Kautex(Textron)",
                 "notes": "Server test",
-                "image": "/uploads/place_holder_image.png"
+                "image": "/uploads/place_holder_image.png",
+                "index": 1
             }
         ],
 
@@ -14,13 +15,15 @@
                 "name": "Astrid Kamto",
                 "title": "Intern, Kautex(Textron)",
                 "notes": "Server test",
-                "image": "/uploads/place_holder_image.png"
+                "image": "/uploads/place_holder_image.png",
+                "index": 1
             },
             {
                 "name": "Astrid Kamto",
                 "title": "Intern, Kautex(Textron)",
                 "notes": "Server test",
-                "image": "/uploads/place_holder_image.png"
+                "image": "/uploads/place_holder_image.png",
+                "index": 2
             }
         ]
     }
