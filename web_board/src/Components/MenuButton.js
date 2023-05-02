@@ -6,7 +6,7 @@ import { Box } from '@chakra-ui/react'
 export default function MenuButton({action, icon ,text, colorScheme, ...props}){
 
     return (
-            <Button width='200px' height='200px'  onClick={action} colorScheme={colorScheme} {...props}>
+            <Button margin={5} width='200px' height='200px'  onClick={action} colorScheme={colorScheme} {...props}>
                 <VStack>
                     <Icon as={icon} boxSize={20}/>
                     <Text>{text}</Text>

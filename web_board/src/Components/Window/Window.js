@@ -6,7 +6,7 @@ import {HamburgerIcon, WarningIcon} from '@chakra-ui/icons'
 import Selector from '../Selector';
 import Page from '../Pages/Page';
 import { Drawer, DrawerOverlay, DrawerContent, DrawerHeader, DrawerBody } from '@chakra-ui/react';
-
+import Navbutton from '../Navbutton';
 
 
 //Main window
@@ -33,7 +33,6 @@ export default function Window()
                         icon={
                             <HamburgerIcon/>
                         }
-                        display={{md:"none"}}
                         aria-label={"Open Menu"}
                         onClick={isOpen ? onClose : onOpen}
                         ></IconButton>
@@ -42,9 +41,9 @@ export default function Window()
                             <DrawerContent>
                             <DrawerHeader borderBottomWidth='1px'>Quick Menu</DrawerHeader>
                             <DrawerBody>
-                                <p>Some contents...</p>
-                                <p>Some contents...</p>
-                                <p>Some contents...</p>
+                                <Navbutton text={"Toyota"} page_name={"toyota_main"}/>
+                                <Navbutton text={"Lexus"} page_name={"lexus_main"}/>
+                                <Navbutton text={"Ford"} page_name={"ford_main"}/>
                             </DrawerBody>
                             </DrawerContent>
                     </Drawer>
