@@ -41,9 +41,9 @@ export default function Window()
                             <DrawerContent>
                             <DrawerHeader borderBottomWidth='1px'>Quick Menu</DrawerHeader>
                             <DrawerBody>
-                                <Navbutton text={"Toyota"} page_name={"toyota_main"}/>
-                                <Navbutton text={"Lexus"} page_name={"lexus_main"}/>
-                                <Navbutton text={"Ford"} page_name={"ford_main"}/>
+                                <Navbutton bgColor='#9cf7c7' variant='outline' text={"Toyota"} page_name={"toyota_main"}/>
+                                <Navbutton bgColor='#9cf7c7' variant='outline' text={"Lexus"} page_name={"lexus_main"}/>
+                                <Navbutton bgColor='#9cf7c7' variant='outline' text={"Ford"} page_name={"ford_main"}/>
                             </DrawerBody>
                             </DrawerContent>
                     </Drawer>
@@ -59,7 +59,7 @@ export default function Window()
             </Box>
             <Alert status='info' alignContent={"center"}>
                 <WarningIcon marginRight={5}/>
-                Alpha version: 0.0.1 (server)
+                Alpha version: 0.0.2 (Base Layout)
             </Alert>           
             <Box>
                 <Page></Page>
