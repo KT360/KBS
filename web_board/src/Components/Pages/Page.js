@@ -1,15 +1,16 @@
 import React from "react";
-import MenuButton from "../MenuButton";
+import MenuButton from "../Navigation/MenuButton";
 import {useDispatch, useSelector} from 'react-redux';
 import { change_page } from "../Window/windowSlice";
 import { CalendarIcon, RepeatIcon, PlusSquareIcon, InfoIcon, CheckCircleIcon } from "@chakra-ui/icons";
 import DocumentCard from "../Applications/DocumentCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {ToyotaIcon} from './ToyotaIcon'
-import { FordIcon } from "./FordIcon";
-import { LexusIcon } from "./LexusIcon";
+import {ToyotaIcon} from '../brand_icons/ToyotaIcon'
+import { FordIcon } from "../brand_icons/FordIcon";
+import { LexusIcon } from "../brand_icons/LexusIcon";
 import { set_updated_page } from "./pageSlice";
+import { Button } from "@chakra-ui/react";
   
 
 //*Note for Icons, remember to delete some of the links  in the header
@@ -50,8 +51,6 @@ export default function Page()
     }, [page, status]);
 
 
-
-
         
     //Object that stores pages as other objects
     //Button configs is an array of objects that represent the buttons(MenuButton)
@@ -88,7 +87,6 @@ export default function Page()
         two_s_page: { documentCards: true, }
     
     }
-
 
     
     //render the specific elements for that page if it has them
