@@ -7,17 +7,26 @@ import React from 'react';
 export const modalSlice = createSlice({
     name: 'modal',
     initialState: {
-        value: {first_name:"", last_name:"", notes:"", image:""},
+        value: { imagePath:"random image path", name:"", title:"Intern, Kautex(Textron)", notes:"",},
     },
 
     reducers: {
         update_form: (state, action) =>
         { 
-            console.log("Page change: "+action.payload);
-            return {
+
+            console.log("The pay load: "+action.payload.imagePath);
+            const newState =  {
                 ...state,
-                value: action.payload
-            }
+                value:{
+                    imagePath: action.payload.imagePath ?? state.value.imagePath,
+                    name: action.payload.name ?? state.value.name,
+                    title: action.payload.title ?? state.value.title,
+                    notes: action.payload.notes ?? state.value.notes,
+                } ,
+            };
+
+            console.log("New state: "+ newState.value.imagePath);
+            return newState;
         }
                
     },

@@ -9,7 +9,7 @@ import axios from "axios";
 import {ToyotaIcon} from './ToyotaIcon'
 import { FordIcon } from "./FordIcon";
 import { LexusIcon } from "./LexusIcon";
-
+import { set_updated_page } from "./pageSlice";
   
 
 //*Note for Icons, remember to delete some of the links  in the header
@@ -20,6 +20,7 @@ import { LexusIcon } from "./LexusIcon";
 export default function Page()
 {
 
+    const status = useSelector((state) => state.page.value);
     const page = useSelector((state) => state.window.value);
     const dispatch = useDispatch();
     const [cards, setCards] = useState([]);
@@ -42,7 +43,11 @@ export default function Page()
         };
 
         populatePages();
-    }, [page]);
+
+        dispatch(set_updated_page(false));
+
+        console.log("---------------Page Render----------");
+    }, [page, status]);
 
 
 

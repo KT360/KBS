@@ -1,30 +1,29 @@
 {
-    "pages" :{
-        "two_s_page":[
-            {
-                "name": "Astrid Kamto",
-                "title": "Intern, Kautex(Textron)",
-                "notes": "Server test",
-                "image": "/uploads/place_holder_image.png",
-                "index": 1
-            }
-        ],
-
-        "quality_page":[
-            {
-                "name": "Astrid Kamto",
-                "title": "Intern, Kautex(Textron)",
-                "notes": "Server test",
-                "image": "/uploads/place_holder_image.png",
-                "index": 1
-            },
-            {
-                "name": "Astrid Kamto",
-                "title": "Intern, Kautex(Textron)",
-                "notes": "Server test",
-                "image": "/uploads/place_holder_image.png",
-                "index": 2
-            }
-        ]
-    }
+  "pages": {
+    "two_s_page": [
+      {
+        "name": "fsgdgdgd My last name",
+        "title": "Intern, Kautex(Textron)",
+        "notes": "gdfgdfgdfg",
+        "imagePath": "/uploads/1683134319363--test.png",
+        "index": 0
+      }
+    ],
+    "quality_page": [
+      {
+        "name": "fsgdgdgd ",
+        "title": "Intern, Kautex(Textron)",
+        "notes": "gdfgdfgdfg",
+        "imagePath": "/uploads/1683128618001--error test.PNG",
+        "index": 0
+      },
+      {
+        "name": "Astrid Kamto",
+        "title": "Intern, Kautex(Textron)",
+        "notes": "Server test",
+        "imagePath": "/uploads/place_holder_image.png",
+        "index": 1
+      }
+    ]
+  }
 }

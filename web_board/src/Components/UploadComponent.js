@@ -1,13 +1,15 @@
 import './UploadModal.css';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Button} from '@chakra-ui/react';
 import { useDispatch } from "react-redux";
 import { update_form } from "./modalSlice";
 import { useSelector } from 'react-redux';
+import { set_updated_page } from './Pages/pageSlice';
 
 //Pretty much the "Upload" and the "Save" button paired 
 //Its in charge of handling the post to the server
+
 
 //TODO: recieve data from the UploadModal From
 export default function UploadComponent({onClose, index})
@@ -18,9 +20,26 @@ export default function UploadComponent({onClose, index})
     const dispatch = useDispatch();
     const modal = useSelector((state) => state.modal.value);
 
+    const [isReadyToSend, setIsReadyToSend] = useState(false);
+
+    useEffect(() =>{
+
+        if(isReadyToSend)
+        {
+            axios.patch(`/pages/${page}/cards/${index}`, modal).then(response => {
+                console.log(response.data);
+            }).catch(error => {
+                console.log(error);
+            });
+
+            dispatch(set_updated_page(true));
+        } 
+    
+    },[modal,isReadyToSend])
+
+
     const handleImageChange = (e) =>{
         setFile(e.target.files[0]);
-        dispatch(update_form({image: "/uploads"+e.target.files[0].filName}))
     };
 
     const handleUpload = async () =>{
@@ -39,11 +58,18 @@ export default function UploadComponent({onClose, index})
 
             console.log('File uploaded', response.data)
 
-            axios.patch(`/pages/${page}/cards/${index}`, modal).then(response => {
-                console.log(response.data);
-            }).catch(error => {
-                console.log(error);
-            });
+            let filePath = response.data.filePath.toLowerCase();
+
+            console.log( typeof filePath);
+
+            dispatch(update_form({imagePath: filePath}));
+
+            await new Promise((resolve) => setTimeout(resolve, 1));
+
+            console.log("Current Modal"+modal.imagePath);
+
+            setIsReadyToSend(true);
+
         }catch (error){
             console.error('error uploading', error)
         }

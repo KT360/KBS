@@ -39,19 +39,22 @@ const readCardsData = () =>{
 app.patch('/pages/:pageID/cards/:cardID', (req, res)=>{
     const dataPath = path.join(__dirname, 'cards.json');
     const dataContent = fs.readFileSync(dataPath, 'utf-8');
-    const pages = JSON.parse(dataContent);
-
-    console.log(pages);
+    const data = JSON.parse(dataContent);
 
     const {pageID, cardID} = req.params;
-    const data = req.body;
+    const mod_data = req.body;
 
-    pages[pageID][cardID] = {
-        ...pages[pageID][cardID],
-        data
+    console.log(mod_data);
+
+    console.log(pageID);
+    console.log(data.pages[pageID]);
+
+    data.pages[pageID][cardID] = {
+        ...data.pages[pageID][cardID],
+        ...mod_data
     };
 
-    fs.writeFileSync(dataPath, JSON.stringify(pages, null, 2));
+    fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
     res.status(200).json({message: "Card updated successfully"});
 
 });
@@ -86,7 +89,7 @@ const upload = multer({storage});
 
 //API endpoint for file uploads
 app.post('/upload', upload.single('file'), (req, res) => {
-    res.json({message: "File uploaded successfully"});
+    res.json({message: "File uploaded successfully", filePath: `/uploads/${req.file.filename}`});
 })
 
 // let the react app to handle any unknown routes 

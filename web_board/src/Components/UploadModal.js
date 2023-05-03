@@ -4,12 +4,21 @@ import './UploadModal.css'
 import UploadComponent from "./UploadComponent";
 import { useDispatch } from "react-redux";
 import { update_form } from "./modalSlice";
-
+import { useState } from "react";
 //Modal to handle form input, whe the "Upload button is clicked"
 //onChange={event => setEmail(event.currentTarget.value)}
 export default function UploadModal({handleOpen, handleClose, index})
 {
   const dispatch = useDispatch();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+
+  function updateName()
+  {
+    let newName = firstName+" "+lastName;
+
+    dispatch(update_form({name: newName}))
+  }
 
     return(
     <>
@@ -24,12 +33,12 @@ export default function UploadModal({handleOpen, handleClose, index})
           <ModalBody pb={6}>
             <FormControl>
               <FormLabel>First name</FormLabel>
-              <Input onChange={event => dispatch(update_form({first_name:event.currentTarget.value}))} placeholder='First name' />
+              <Input onChange={event => {setFirstName(event.currentTarget.value); updateName()}} placeholder='First name' />
             </FormControl>
 
             <FormControl mt={4}>
               <FormLabel>Last name</FormLabel>
-              <Input onChange={event => dispatch(update_form({last_name:event.currentTarget.value}))}  placeholder='Last name' />
+              <Input onChange={event => {setLastName(event.currentTarget.value); updateName()}}  placeholder='Last name' />
             </FormControl>
 
             <FormControl mt={6}>

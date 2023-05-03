@@ -12,7 +12,7 @@ import { SingleSource } from "./CustomImage"
 
 
 //Card to display data fetched from the server
-export default function DocumentCard({name, title, notes, image, index ,...props})
+export default function DocumentCard({name, title, notes, imagePath, index ,...props})
 {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -57,7 +57,7 @@ export default function DocumentCard({name, title, notes, image, index ,...props
                 </Text>
             </CardBody>
             <SingleSource objectFit='cover'
-                src={image}
+                src={imagePath}
                 alt='Chakra UI'/>
         </Card>
     )
