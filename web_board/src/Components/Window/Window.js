@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { HStack, IconButton, Link, Flex, Heading, Center } from '@chakra-ui/react';
 import {useDisclosure, Box, Alert} from "@chakra-ui/react"
 import {HamburgerIcon, WarningIcon} from '@chakra-ui/icons'
-import Selector from '../Selector';
+import Selector from '../Navigation/Selector';
 import Page from '../Pages/Page';
 import { Drawer, DrawerOverlay, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter } from '@chakra-ui/react';
-import Navbutton from '../Navbutton';
+import Navbutton from '../Navigation/Navbutton';
 import {FcTreeStructure} from 'react-icons/fc'
 import { Icon } from '@chakra-ui/react';
 

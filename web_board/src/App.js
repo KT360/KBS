@@ -1,6 +1,6 @@
 import React from 'react';
 import Window from './Components/Window/Window';
-import Selector from './Components/Selector';
+import Selector from './Components/Navigation/Selector';
 import './App.css';
 
 //display the main window
