@@ -22,7 +22,7 @@ export default function UploadComponent({ onClose, index, type }) {
 
     useEffect(() => {
 
-        socket = io('http://localhost:3000');
+        socket = io();
         socket.on('card updated', (response) => {
             console.log(response);
             dispatch(set_updated_page(true));
