@@ -11,7 +11,10 @@ import { FordIcon } from "../brand_icons/FordIcon";
 import { LexusIcon } from "../brand_icons/LexusIcon";
 import { set_updated_page } from "./pageSlice";
 import { Button } from "@chakra-ui/react";
-  
+import { io } from "socket.io-client";
+
+// Connect to the server
+const socket = io.connect('/');
 
 //*Note for Icons, remember to delete some of the links  in the header
 
@@ -37,6 +40,8 @@ export default function Page()
                 const data = await response.data;
 
                 setCards(data);
+
+                console.log("New Card Data: "+data);
             } catch (error)
             {
                 console.error('error fetching cards', error);
@@ -47,7 +52,17 @@ export default function Page()
 
         dispatch(set_updated_page(false));
 
-        console.log("---------------Page Render----------");
+        // Listen for the 'card updated' event
+        socket.on('card updated', () => {
+            console.log("Card updated event received. Refreshing cards.");
+            populatePages();
+        });
+
+        // Remove the event listener when the component is unmounted
+        return () => {
+            socket.off('card updated');
+        };
+
     }, [page, status]);
 
 

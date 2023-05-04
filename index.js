@@ -6,11 +6,52 @@ const fs = require('fs');
 const PORT = process.env.PORT || 3000;
 const path = require('path');
 const bodyParser = require('body-parser');
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
 
 // serve up production assets
 app.use(express.static('web_board/build'));
 app.use('/uploads',express.static(path.join(__dirname, 'uploads')));
 app.use(bodyParser.json());
+
+
+//Listen to connection event on server
+io.on('connection', (socket) => {
+    console.log('User connected');
+  
+    // when the client emits 'update', this listens and executes
+    socket.on('update', (data) => {
+      // we tell the client to execute 'update', and retrieve data
+        const dataPath = path.join(__dirname, 'cards.json');
+        const dataContent = fs.readFileSync(dataPath, 'utf-8');
+        const fileData = JSON.parse(dataContent);
+
+        const {pageID, cardID, mod_data} = data;
+
+        console.log(mod_data);
+
+        if(fileData.pages[pageID] && fileData.pages[pageID][cardID] !== undefined)
+        {
+            fileData.pages[pageID][cardID] = {
+                ...fileData.pages[pageID][cardID],
+                ...mod_data
+            };
+        }else
+        {
+            console.error('Invalid pageID or cardID:', pageID, cardID);
+        }
+
+        console.log("Updated Data: "+pageID+cardID);
+
+        fs.writeFileSync(dataPath, JSON.stringify(fileData, null, 2));
+        io.emit('card updated', {message: "Card updated sucessfully"});
+    });
+  
+    // when the user disconnects, perform this
+    socket.on('disconnect', () => {
+      console.log('User disconnected');
+    });
+  });
 
 //reads the json card data and transforms it into a javascript object
 const readCardsData = () =>{
@@ -36,28 +77,6 @@ const readCardsData = () =>{
 //write to file
 //send status
 
-app.patch('/pages/:pageID/cards/:cardID', (req, res)=>{
-    const dataPath = path.join(__dirname, 'cards.json');
-    const dataContent = fs.readFileSync(dataPath, 'utf-8');
-    const data = JSON.parse(dataContent);
-
-    const {pageID, cardID} = req.params;
-    const mod_data = req.body;
-
-    console.log(mod_data);
-
-    console.log(pageID);
-    console.log(data.pages[pageID]);
-
-    data.pages[pageID][cardID] = {
-        ...data.pages[pageID][cardID],
-        ...mod_data
-    };
-
-    fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
-    res.status(200).json({message: "Card updated successfully"});
-
-});
 
 //For the card request API, get the data, check if page exist and send appropriate data
 app.get('/cards/:page', (req,res)=>{
@@ -100,4 +119,4 @@ res.sendFile(path.resolve(__dirname, 'web_board', 'build', 'index.html' ));
 
 
 console.log('server started on port:',PORT);
-app.listen(PORT, '0.0.0.0');
+server.listen(PORT, '0.0.0.0');
