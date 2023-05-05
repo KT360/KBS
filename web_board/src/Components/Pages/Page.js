@@ -93,7 +93,9 @@ export default function Page()
 
 
         kbs_page: { buttonConfigs: [ {text: "TPM", action: ()=> dispatch(change_page("tpm_page")), icon: InfoIcon, colorScheme: "green"},
-        {text: "Quality", action: () => dispatch(change_page("quality_page")), icon: CheckCircleIcon, colorScheme: "purple"} ],},
+                                     {text: "Quality", action: () => dispatch(change_page("quality_page")), icon: CheckCircleIcon, colorScheme: "purple"},
+                                     {text: "Std Work", action: () => dispatch(change_page("quality_page")), icon: CheckCircleIcon, colorScheme: "pink"},
+                                     {text: "Plant Requirements", action: () => dispatch(change_page("quality_page")), icon: PlusSquareIcon, colorScheme: "green"} ],},
 
         quality_page: {documentCards: true,},
         
